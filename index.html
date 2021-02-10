@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemeGen</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1c8b77ceee.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload="init()">
@@ -22,10 +25,55 @@
             </div>
         </nav>
     </header>
-    <section id="gallery" class="main-size"></section>
-    <section id="editor"></section>
-    <section id="about"></section>
-    <footer></footer>
+    <main class="main-size">
+
+        <section id="editor" class="hide">
+            <div class="canvas-container flex space-between">
+                <canvas id="my-canvas" width="400" height="400" style="outline:1px solid green"
+                    onclick="canvasClicked(event)">
+                </canvas>
+
+                <div class="controls-container">
+                    <input type="text" placeholder="Text" class="input-text" name="text-input" onchange="onDrawText()">
+
+                    <button onclick="onChangeLine()"><img class="up-down"
+                            src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <button onclick="addLine()"><img class="add" src="ICONS/add.png" alt=""></button>
+                    <button><img class="trash" src="ICONS/trash.png" alt=""></button>
+                    <button onclick="onIncrease()"><img class="increase" src="ICONS/increase font - icon.png"
+                            alt=""></button>
+                    <button onclick="onDecrease()"><img class="decrease" src="ICONS/decrease font - icon.png"
+                            alt=""></button>
+                    <button><img class="align-left" src="ICONS/align-to-left.png" alt=""></button>
+                    <button><img class="align-center" src="ICONS/center-text-alignment.png" alt=""></button>
+                    <button><img class="align-right" src="ICONS/align-to-right.png" alt=""></button>
+                    <button><img class="text-stroke" src="ICONS/text stroke.png" alt=""></button>
+                    <button><img class="paint-board" src="ICONS/paint-board-and-brush.png" alt=""></button>
+                    <select class="select" name="" id="">
+                        <option value="">aa</option>
+                        <option value="">bb</option>
+                    </select>
+
+
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="main-size"></section>
+
+        <section id="about" class="main-size">
+
+
+        </section>
+
+    </main>
+    <footer class="main-footer">
+        <div class="flex footer-content main-size">
+            <h2>Memegen</h2>
+            <small>©Cofferights - All Rights Reserved 2021</small>
+
+        </div>
+    </footer>
 
 
 </body>
