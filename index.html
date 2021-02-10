@@ -9,9 +9,27 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="init()">
+    <header class="flex">
+        <nav class="main-nav flex align-center">
+            <div class="nav-container flex main-size space-between align-center">
+                <div class="nav-brand">Memegen</div>
+                <ul class="nav-list flex clean-list align-center space-between">
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#editor">Editor</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section id="gallery" class="main-size"></section>
+    <section id="editor"></section>
+    <section id="about"></section>
+    <footer></footer>
+
 
 </body>
+<script src="js/service.js"></script>
 <script src="js/main.js"></script>
 
 </html>
