@@ -108,7 +108,6 @@ li a{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 19px;
 }
 
 
@@ -314,6 +313,16 @@ button img{
     color: #4a4a4a;
     font-family: 'Montserrat', sans-serif;
 }
+.icon{
+font-size: 1.8rem;
+color:#FF7F00;
+cursor: pointer;
+margin-right: 10px;
+}
+
+.icon:hover{
+box-shadow: 2px 1px 7px 2px #9e9e9e;
+}
 
   /* FOOTER */
   .main-footer{
@@ -414,8 +423,12 @@ align-items: center;
         transition: height .6s;
         height: 0px;
         font-size: 0.8rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
 
     }
+    
     li{
         margin-bottom:10px;
         border: none;

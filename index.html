@@ -41,6 +41,7 @@
                             alt=""></button>
                     <button class="up-down" onclick="onChangeLine()"><img
                             src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <span>Line:<span class="show-line">0</span></span>
                     <button class="add" onclick="addLine()"><img src="ICONS/add.png" alt=""></button>
                     <button class="trash" onclick="onDeleteLine()"><img src="ICONS/trash.png" alt=""></button>
                     <button class="increase" onclick=onSetFontSize(5)><img src="ICONS/increase font - icon.png"
@@ -62,7 +63,7 @@
                             onchange="onSetStrokeColor(this.value)">
                     </div>
 
-                    <select onblur="onSetFont()" class="select">
+                    <select onblur="onSetFont(this.value)" class="select">
                         <option value="Impact">Impact</option>
                         <option value="Ariel">Ariel</option>
                     </select>
@@ -90,6 +91,12 @@
                         <br>
                         I have learned how to program at Coding Academy And Udemy.
                     </p>
+                    <div class="links">
+                        <a href="https://www.linkedin.com/in/yoni-bar-5224b5203/"><i
+                                class="icon fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/yonatan.bar.9/"><i class="icon fab fa-facebook"></i></a>
+                        <a href="https://github.com/yonibar1"><i class="icon fab fa-github"></i></a>
+                    </div>
                 </div>
 
             </div>

@@ -60,8 +60,7 @@ function onChangeLine() {
     changeLine()
 }
 
-function onSetFont() {
-    var value = document.querySelector('.select').value
+function onSetFont(value) {
     setFont(value)
 }
 
@@ -82,7 +81,8 @@ function drawText(line) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = line.stroke
     gCtx.fillStyle = line.color
-    gCtx.font = `${line.fontSize}px IMPACT`
+    gCtx.font = line.fontSize + 'px ' + line.font
+    // gCtx.font = `${line.fontSize}px ${line.font}`
     gCtx.textAlign = line.align
     gCtx.fillText(line.txt, gElCanvas.width / 2, line.y)
     gCtx.strokeText(line.txt, gElCanvas.width / 2, line.y)

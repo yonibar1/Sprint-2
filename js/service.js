@@ -34,7 +34,7 @@ let defaultColor = 'white';
 let defaultAlign = 'center';
 let defaultStroke = 'black';
 let defaultY = lineDifference;
-let defaultFont = 'impact'
+let defaultFont = 'Impact'
 
 function getImgs() {
     return gImgs
@@ -67,6 +67,7 @@ function addLine() {
     const line = { txt: '', fontSize: defaultFontSize, color: defaultColor, align: defaultAlign, font: defaultFont, stroke: defaultStroke, y }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    document.querySelector('.show-line').innerText = gMeme.selectedLineIdx + 1
 }
 
 function changeLine() {
@@ -74,6 +75,7 @@ function changeLine() {
     if (gMeme.selectedLineIdx >= gMeme.lines.length) {
         gMeme.selectedLineIdx = 0
     }
+    document.querySelector('.show-line').innerText = gMeme.selectedLineIdx + 1
 }
 
 function setFontSize(diff) {
