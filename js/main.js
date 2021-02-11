@@ -23,18 +23,15 @@ function drawImgFromlocal(elImage) {
     var elEditor = document.querySelector('#editor')
     elEditor.classList.remove('hide')
     updateMemeIdx(elImage)
-
-    var meme = getMeme()
-
-
+    // var meme = getMeme()
     const img = new Image()
     gCurrImg = img
     img.src = elImage.src;
     img.onload = () => {
         setImage();
     }
-
 }
+
 function onMoveLine(diff) {
     moveLine(diff)
 }
@@ -46,6 +43,7 @@ function onSetFontSize(diff) {
 function onSetColorFill(inputColor) {
     setColorFill(inputColor);
 }
+
 function onSetStrokeColor(inputColor) {
     setStrokeColor(inputColor);
 }
@@ -53,6 +51,7 @@ function onSetStrokeColor(inputColor) {
 function onDeleteLine() {
     deleteLine()
 }
+
 function onSetAlign(direction) {
     setAlign(direction)
 }
@@ -61,16 +60,19 @@ function onChangeLine() {
     changeLine()
 }
 
+function onSetFont() {
+    var value = document.querySelector('.select').value
+    setFont(value)
+}
+
 function setImage() {
     gCtx.drawImage(gCurrImg, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xend,yend
 }
-
 
 function onDrawText() {
     var text = document.querySelector('[name=text-input]').value
     updateMemeContent(text)
 }
-
 
 function canvasClicked(ev) {
     const { offsetX, offsetY } = ev // offset = איפה לחצתי על הקנווס
@@ -90,8 +92,13 @@ function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
 }
 
-// function resizeCanvas() {
-//     var elContainer = document.querySelector('.canvas-container')
-//     gElCanvas.width = elContainer.offsetWidth
-//     gElCanvas.height = elContainer.offsetHeight
-// }
+function toggleMenu() {
+    document.body.classList.toggle('open-menu')
+}
+
+function downloadImg(elLink) {
+    var imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+
+

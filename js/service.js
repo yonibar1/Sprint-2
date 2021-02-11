@@ -34,6 +34,7 @@ let defaultColor = 'white';
 let defaultAlign = 'center';
 let defaultStroke = 'black';
 let defaultY = lineDifference;
+let defaultFont = 'impact'
 
 function getImgs() {
     return gImgs
@@ -52,7 +53,6 @@ function updateMemeContent(newText) {
     }
     gMeme.lines[gMeme.selectedLineIdx].txt = newText;
     resetAndDraw()
-
 }
 
 function resetAndDraw() {
@@ -64,7 +64,7 @@ function resetAndDraw() {
 function addLine() {
     const last = gMeme.lines.length > 0 ? gMeme.lines[gMeme.lines.length - 1] : null;
     const y = last ? last.y + lineDifference : defaultY;
-    const line = { txt: '', fontSize: defaultFontSize, color: defaultColor, align: defaultAlign, stroke: defaultStroke, y }
+    const line = { txt: '', fontSize: defaultFontSize, color: defaultColor, align: defaultAlign, font: defaultFont, stroke: defaultStroke, y }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
@@ -83,12 +83,18 @@ function setFontSize(diff) {
     resetAndDraw()
 }
 
+function setFont(value) {
+    gMeme.lines[gMeme.selectedLineIdx].font = value
+    resetAndDraw()
+}
+
 function setAlign(direction) {
     if (direction === 'left') gMeme.lines[gMeme.selectedLineIdx].align = 'left'
     if (direction === 'center') gMeme.lines[gMeme.selectedLineIdx].align = 'center'
     if (direction === 'right') gMeme.lines[gMeme.selectedLineIdx].align = 'right'
     resetAndDraw()
 }
+
 function deleteLine() {
     if (!gMeme.lines[gMeme.selectedLineIdx]) return
     var userAnswer = confirm(`are you sure you want to delete this line - "${gMeme.lines[gMeme.selectedLineIdx].txt
@@ -99,6 +105,7 @@ function deleteLine() {
         resetAndDraw()
     }
 }
+
 function moveLine(diff) {
     if (!gMeme.lines.length) return
     if (!diff) {

@@ -15,18 +15,19 @@
 <body onload="init()">
     <header class="flex">
         <nav class="main-nav flex align-center">
-            <div class="nav-container flex main-size space-between align-center">
+            <div class="nav-container flex space-between align-center">
                 <div class="nav-brand"><img src="imgs/LOGO.png" alt="memegen"></div>
                 <ul class="nav-list flex clean-list align-center space-between">
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#editor">Editor</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
+                <button onclick="toggleMenu()" class="menu-button">&#9776;</button>
             </div>
         </nav>
     </header>
 
-    <main class="main-size">
+    <main>
         <section id="editor" class="hide">
             <!-- <div class="canvas-container flex space-between"> -->
             <div class="canvas-container flex">
@@ -55,26 +56,32 @@
                     <div class="text-color">
                         <input class="input-color" type="color" name="text-color-input"
                             onchange="onSetColorFill(this.value)">
-
                     </div>
                     <div class="stroke-color">
                         <input class="input-color" type="color" name="stroke-color-input"
                             onchange="onSetStrokeColor(this.value)">
                     </div>
 
-                    <select class="select" name="" id="">
-                        <option value="impact">Impact</option>
-                        <option value="ariel">Ariel</option>
+                    <select onblur="onSetFont()" class="select">
+                        <option value="Impact">Impact</option>
+                        <option value="Ariel">Ariel</option>
                     </select>
+                    <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download Meme</a>
+                    <form class="submit-form" action="" method="POST" enctype="multipart/form-data"
+                        onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="submit-btn" type="submit">Publish</button>
+                        <div class="share-container"></div>
+                    </form>
 
 
                 </div>
             </div>
         </section>
 
-        <section id="gallery" class="main-size"></section>
+        <section id="gallery"></section>
 
-        <section id="about" class="main-size">
+        <section id="about">
             <div class="about-content">
                 <img src="imgs/yoni.jpg" alt="">
                 <div class="about-text">
@@ -91,8 +98,8 @@
 
     </main>
     <footer class="main-footer">
-        <div class="flex footer-content main-size">
-            <h2>Memegen</h2>
+        <div class="flex footer-content">
+            <img src="imgs/LOGO.png" alt="memegen">
             <small>©Cofferights - All Rights Reserved 2021</small>
 
         </div>
@@ -100,6 +107,7 @@
 
 
 </body>
+<script src="js/upload-service.js"></script>
 <script src="js/service.js"></script>
 <script src="js/main.js"></script>
 
