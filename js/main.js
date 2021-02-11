@@ -79,7 +79,7 @@ function canvasClicked(ev) {
 }
 
 function drawText(line) {
-    gCtx.lineWidth = 2
+    gCtx.lineWidth = 1
     gCtx.strokeStyle = line.stroke
     gCtx.fillStyle = line.color
     gCtx.font = `${line.fontSize}px IMPACT`

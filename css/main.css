@@ -473,10 +473,6 @@ align-items: center;
     small{
         width: 50%;
     }
-    #my-canvas{
-        width: 50%;
-        height: 50%;
-        align-self: center;
-    }
+   
 
 }
