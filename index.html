@@ -16,7 +16,7 @@
     <header class="flex">
         <nav class="main-nav flex align-center">
             <div class="nav-container flex main-size space-between align-center">
-                <div class="nav-brand">Memegen</div>
+                <div class="nav-brand"><img src="imgs/LOGO.png" alt="memegen"></div>
                 <ul class="nav-list flex clean-list align-center space-between">
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#editor">Editor</a></li>
@@ -25,33 +25,46 @@
             </div>
         </nav>
     </header>
-    <main class="main-size">
 
+    <main class="main-size">
         <section id="editor" class="hide">
-            <div class="canvas-container flex space-between">
-                <canvas id="my-canvas" width="400" height="400" style="outline:1px solid green"
-                    onclick="canvasClicked(event)">
+            <!-- <div class="canvas-container flex space-between"> -->
+            <div class="canvas-container flex">
+                <canvas id="my-canvas" width="550" height="550" onclick="canvasClicked(event)">
                 </canvas>
 
                 <div class="controls-container">
                     <input type="text" placeholder="Text" class="input-text" name="text-input" onchange="onDrawText()">
-
-                    <button onclick="onChangeLine()"><img class="up-down"
+                    <button class="move-up" onclick="onMoveLine(true)"><img src="ICONS/move-up.png" alt=""></button>
+                    <button class="move-down" onclick="onMoveLine(false)"><img src="ICONS/move-down.png"
+                            alt=""></button>
+                    <button class="up-down" onclick="onChangeLine()"><img
                             src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-                    <button onclick="addLine()"><img class="add" src="ICONS/add.png" alt=""></button>
-                    <button><img class="trash" src="ICONS/trash.png" alt=""></button>
-                    <button onclick="onIncrease()"><img class="increase" src="ICONS/increase font - icon.png"
+                    <button class="add" onclick="addLine()"><img src="ICONS/add.png" alt=""></button>
+                    <button class="trash" onclick="onDeleteLine()"><img src="ICONS/trash.png" alt=""></button>
+                    <button class="increase" onclick=onSetFontSize(5)><img src="ICONS/increase font - icon.png"
                             alt=""></button>
-                    <button onclick="onDecrease()"><img class="decrease" src="ICONS/decrease font - icon.png"
+                    <button class="decrease" onclick="onSetFontSize(-5)"><img src="ICONS/decrease font - icon.png"
                             alt=""></button>
-                    <button><img class="align-left" src="ICONS/align-to-left.png" alt=""></button>
-                    <button><img class="align-center" src="ICONS/center-text-alignment.png" alt=""></button>
-                    <button><img class="align-right" src="ICONS/align-to-right.png" alt=""></button>
-                    <button><img class="text-stroke" src="ICONS/text stroke.png" alt=""></button>
-                    <button><img class="paint-board" src="ICONS/paint-board-and-brush.png" alt=""></button>
+                    <button class="align-left" onclick="onSetAlign('right')"><img src="ICONS/align-to-left.png"
+                            alt=""></button>
+                    <button class="align-center" onclick="onSetAlign('center')"><img
+                            src="ICONS/center-text-alignment.png" alt=""></button>
+                    <button class="align-right" onclick="onSetAlign('left')"><img src="ICONS/align-to-right.png"
+                            alt=""></button>
+                    <div class="text-color">
+                        <input class="input-color" type="color" name="text-color-input"
+                            onchange="onSetColorFill(this.value)">
+
+                    </div>
+                    <div class="stroke-color">
+                        <input class="input-color" type="color" name="stroke-color-input"
+                            onchange="onSetStrokeColor(this.value)">
+                    </div>
+
                     <select class="select" name="" id="">
-                        <option value="">aa</option>
-                        <option value="">bb</option>
+                        <option value="impact">Impact</option>
+                        <option value="ariel">Ariel</option>
                     </select>
 
 
@@ -62,7 +75,17 @@
         <section id="gallery" class="main-size"></section>
 
         <section id="about" class="main-size">
+            <div class="about-content">
+                <img src="imgs/yoni.jpg" alt="">
+                <div class="about-text">
+                    <h3>Yoni Bar</h3>
+                    <p> I live in Kfar Tavor,Israel. Im 22 years old.
+                        <br>
+                        I have learned how to program at Coding Academy And Udemy.
+                    </p>
+                </div>
 
+            </div>
 
         </section>
 

@@ -57,11 +57,7 @@ button:hover{
 .flex.align-center {
     align-items: center;
 }
-.main-size{
-    max-width: 980px;
-    margin-left: 260px;
-    margin-right: 260px;
-}
+
 
 /* list helpers */
 .clean-list {
@@ -77,13 +73,16 @@ button:hover{
     color: #FFFFFF;
     width: 100%;
     box-shadow: inset 0px -4px 8px 1px whitesmoke;
+    padding-left: 100px;
+    padding-right: 100px;
+
     /* position: fixed; */
 }
 .nav-brand{
     flex:1;
-    font-family: euro;
-    font-size: 1.5rem;
-    text-transform: lowercase;
+}
+.nav-brand img{
+    width: 133px;
 }
 .nav-list{
     flex:1;
@@ -92,7 +91,6 @@ button:hover{
 
 .nav-list > *{
     font-family: lato-bold;
-    /* height: 130px; */
     width: 100%;
     text-align: center;
 }
@@ -102,11 +100,12 @@ button:hover{
 li a{
     text-decoration: none;
     color: white;
-    height: 80px;
+    height: 66px;
     transition: color .3s;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 19px;
 }
 
 
@@ -118,7 +117,7 @@ color:#000000;
 }
 
 .nav-container{
-    width:100%
+    width:100%;
 }
 
 /* MAIN */
@@ -134,8 +133,17 @@ main{
     grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
     grid-auto-rows: 250px;
     grid-gap: 20px;
-    margin: 40px auto 80px auto;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
+#gallery img:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 8px 4px rgb(134 134 134);
+}
+
+
 
 
 
@@ -143,77 +151,145 @@ main{
 
 /* CANVAS */
 #editor{
-    background-color: #E3E3E3;
-    padding: 5px 50px;
+    background-color:#E3E3E3;
+    padding: 50px 50px;
     /* display: none; */
 }
+#my-canvas{
+    box-shadow: 0px 0px 7px 6px rgba(255, 255, 255, 0.74);
+}
 .canvas-container {
-    /* justify-content: space-evenly; */
-    width: 50%;
-    height: 50%;
+    justify-content: space-evenly;    
 }
 
 /* CANVAS CONTROLS */
 .controls-container{
     display: grid;
+    grid-template-columns: repeat(5,60px);
+    grid-template-rows: repeat(5,60px);
+    grid-gap: 10px;   
+}
+.controls-container button{
+    background-color: rgba(255, 253, 253, 0.74);
+    border-radius: 10px;
+    padding:5px;
+    border: none;
+}
+.controls-container button:hover{
+    box-shadow: 0px 0px 5px 1px rgb(134, 134, 134);
+}
+
+.input-color{
+    opacity: 0;
     width: 100%;
     height: 100%;
-    grid-template-columns: repeat(5,20%);
-    grid-template-rows: repeat(5,20%);
-    grid-gap: 10px;
-    
+    cursor: pointer;
 }
 
 .input-text {
-  grid-column: 1/-1;
+    grid-row:1/2;
+    grid-column: 1/-1;
+    border:none;
+    outline:none;
+    border-radius: 10px;
+    text-align: center;
 } 
+.move-up{
+    grid-row:2/3;
+    grid-column: 2/4;
+}
+.move-down{
+    grid-row:2/3;   
+    grid-column: 4/6;
+
+}
+.up-down{
+    grid-row:3/4;
+    grid-column: 2/3;
+}
+.add{
+    grid-row:3/4;
+    grid-column: 3/4;
+}
+.trash{
+    grid-row:3/4;
+    grid-column: 4/5;
+}
+.increase{
+grid-row:4/5;
+grid-column:1/2;
+}
+.decrease{
+    grid-row:4/5;
+    grid-column:2/3;
+}
+.align-left{
+    grid-row:4/5;
+    grid-column:3/4;
+}
+.align-center{
+    grid-row:4/5;
+    grid-column:4/5;
+}
+.align-right{
+    grid-row:4/5;
+    grid-column:5/6;
+}
+.select{
+    grid-row:5/6;
+    grid-column:1/4;
+    cursor: pointer;
+}
+.stroke-color{
+    /* background-image: url(../ICONS/text\ stroke.png); */
+    border-radius: 10px;
+    background-color: black;
+    grid-row:5/6;
+    grid-column:4/5;
+}
+.text-color{
+    border-radius: 10px;
+    /* background-image: url(../ICONS/paint-board-and-brush.png); */
+    background-color: black;
+    grid-row:5/6;
+    grid-column:5/6;
+}
 
 
 
-
-/* .controls-container button{
-    width: 20%;
+ .controls-container button{
+    width: 60px;
+    height: 60px;
 }
 button img{
     width: 100%;
     height: 100%;
 }
 
+/* ABOUT */
+.about-content{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.about-content img{
+    width: 300px;
+    height: 300px;
+    border-radius:50%;
+}
+.about-content h3 {
+    color: #181717;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold;
+    font-size:1.5625rem;
 
+}
+.about-content p {
+    color: #4a4a4a;
+    font-family: 'Montserrat', sans-serif;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
   /* FOOTER */
   .main-footer{

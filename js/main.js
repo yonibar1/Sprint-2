@@ -35,14 +35,28 @@ function drawImgFromlocal(elImage) {
     }
 
 }
-
-function onDecrease() {
-    decrease()
+function onMoveLine(diff) {
+    moveLine(diff)
 }
 
-function onIncrease() {
-    increase()
+function onSetFontSize(diff) {
+    setFontSize(diff)
 }
+
+function onSetColorFill(inputColor) {
+    setColorFill(inputColor);
+}
+function onSetStrokeColor(inputColor) {
+    setStrokeColor(inputColor);
+}
+
+function onDeleteLine() {
+    deleteLine()
+}
+function onSetAlign(direction) {
+    setAlign(direction)
+}
+
 function onChangeLine() {
     changeLine()
 }

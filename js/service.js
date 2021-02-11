@@ -76,15 +76,55 @@ function changeLine() {
     }
 }
 
-function increase() {
-    gMeme.lines[gMeme.selectedLineIdx].fontSize += 5
+function setFontSize(diff) {
+    gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
     if (gMeme.lines[gMeme.selectedLineIdx].fontSize > 100) return
-    resetAndDraw()
-}
-function decrease() {
-    gMeme.lines[gMeme.selectedLineIdx].fontSize -= 5
     if (gMeme.lines[gMeme.selectedLineIdx].fontSize < 20) return
     resetAndDraw()
 }
 
+function setAlign(direction) {
+    if (direction === 'left') gMeme.lines[gMeme.selectedLineIdx].align = 'left'
+    if (direction === 'center') gMeme.lines[gMeme.selectedLineIdx].align = 'center'
+    if (direction === 'right') gMeme.lines[gMeme.selectedLineIdx].align = 'right'
+    resetAndDraw()
+}
+function deleteLine() {
+    if (!gMeme.lines[gMeme.selectedLineIdx]) return
+    var userAnswer = confirm(`are you sure you want to delete this line - "${gMeme.lines[gMeme.selectedLineIdx].txt
+        }"`)
+    if (!userAnswer) return
+    else {
+        gMeme.lines[gMeme.selectedLineIdx]--
+        resetAndDraw()
+    }
+}
+function moveLine(diff) {
+    if (!gMeme.lines.length) return
+    if (!diff) {
+        if ((gMeme.lines[gMeme.selectedLineIdx].y + gMeme.lines[gMeme.selectedLineIdx].fontSize / 2) === gElCanvas.height) return
+        gMeme.lines[gMeme.selectedLineIdx].y += 10
+        resetAndDraw()
+    }
+    if (diff) {
+        if ((gMeme.lines[gMeme.selectedLineIdx].y - gMeme.lines[gMeme.selectedLineIdx].fontSize) === 0) return
+        gMeme.lines[gMeme.selectedLineIdx].y -= 10
+        resetAndDraw()
+    }
+}
+
+function setColorFill(inputColor) {
+    var elInput = document.querySelector('.text-color')
+    elInput.style.backgroundColor = inputColor
+    const line = gMeme.lines[gMeme.selectedLineIdx];
+    line.color = inputColor;
+    resetAndDraw()
+}
+function setStrokeColor(inputColor) {
+    var elInput = document.querySelector('.stroke-color')
+    elInput.style.backgroundColor = inputColor
+    const line = gMeme.lines[gMeme.selectedLineIdx];
+    line.stroke = inputColor;
+    resetAndDraw()
+}
 
