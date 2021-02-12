@@ -73,10 +73,6 @@ function onDrawText() {
     updateMemeContent(text)
 }
 
-function canvasClicked(ev) {
-    const { offsetX, offsetY } = ev // offset = איפה לחצתי על הקנווס
-}
-
 function drawText(line) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = line.stroke
