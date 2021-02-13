@@ -23,7 +23,6 @@ function drawImgFromlocal(elImage) {
     var elEditor = document.querySelector('#editor')
     elEditor.classList.remove('hide')
     updateMemeIdx(elImage)
-    // var meme = getMeme()
     const img = new Image()
     gCurrImg = img
     img.src = elImage.src;
@@ -71,14 +70,15 @@ function setImage() {
 function onDrawText() {
     var text = document.querySelector('[name=text-input]').value
     updateMemeContent(text)
+    initDragAndDrop()
 }
 
 function drawText(line) {
+    if (!line) return
     gCtx.lineWidth = 1
     gCtx.strokeStyle = line.stroke
     gCtx.fillStyle = line.color
     gCtx.font = line.fontSize + 'px ' + line.font
-    // gCtx.font = `${line.fontSize}px ${line.font}`
     gCtx.textAlign = line.align
     gCtx.fillText(line.txt, gElCanvas.width / 2, line.y)
     gCtx.strokeText(line.txt, gElCanvas.width / 2, line.y)

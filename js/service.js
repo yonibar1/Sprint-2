@@ -64,7 +64,7 @@ function resetAndDraw() {
 function addLine() {
     const last = gMeme.lines.length > 0 ? gMeme.lines[gMeme.lines.length - 1] : null;
     const y = last ? last.y + lineDifference : defaultY;
-    const line = { txt: '', fontSize: defaultFontSize, color: defaultColor, align: defaultAlign, font: defaultFont, stroke: defaultStroke, y }
+    const line = { txt: '', fontSize: defaultFontSize, color: defaultColor, align: defaultAlign, font: defaultFont, stroke: defaultStroke, y, isDragging: false }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
     document.querySelector('.show-line').innerText = gMeme.selectedLineIdx + 1
@@ -76,6 +76,7 @@ function changeLine() {
         gMeme.selectedLineIdx = 0
     }
     document.querySelector('.show-line').innerText = gMeme.selectedLineIdx + 1
+    initDragAndDrop()
 }
 
 function setFontSize(diff) {

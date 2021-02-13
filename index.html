@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemeGen</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon_io">
+    <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="imgs/favicon_io/site.webmanifest">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1c8b77ceee.js" crossorigin="anonymous"></script>
@@ -30,10 +34,11 @@
 
     <main>
         <section id="editor" class="hide">
-            <!-- <div class="canvas-container flex space-between"> -->
             <div class="canvas-container flex">
-                <canvas id="my-canvas" width="550" height="550" onclick="canvasClicked(event)">
-                </canvas>
+                <div class="canvas-only flex">
+                    <canvas id="my-canvas" width="550" height="550">
+                    </canvas>
+                </div>
 
                 <div class="controls-container">
                     <input type="text" placeholder="Text" class="input-text" name="text-input" onchange="onDrawText()">
@@ -115,6 +120,7 @@
 
 
 </body>
+<script src="js/dragAndDrop.js"></script>
 <script src="js/upload-service.js"></script>
 <script src="js/service.js"></script>
 <script src="js/main.js"></script>
