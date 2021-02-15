@@ -24,7 +24,7 @@
                 <div class="nav-brand"><img src="imgs/LOGO.png" alt="memegen"></div>
                 <ul class="nav-list flex clean-list align-center space-between">
                     <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#editor">Editor</a></li>
+                    <li><a onclick="renderSavedMemes()">Memes</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
                 <button onclick="toggleMenu()" class="menu-button">&#9776;</button>
@@ -35,13 +35,11 @@
     <main>
         <section id="editor" class="hide">
             <div class="canvas-container flex">
-                <div class="canvas-only flex">
-                    <canvas id="my-canvas" width="550" height="550">
-                    </canvas>
-                </div>
+                <canvas id="my-canvas" width="550" height="550">
+                </canvas>
 
                 <div class="controls-container">
-                    <input type="text" placeholder="Text" class="input-text" name="text-input" onchange="onDrawText()">
+                    <input type="text" placeholder="Text" class="input-text" name="text-input" oninput="onDrawText()">
                     <button class="move-up" onclick="onMoveLine(true)"><img src="ICONS/move-up.png" alt=""></button>
                     <button class="move-down" onclick="onMoveLine(false)"><img src="ICONS/move-down.png"
                             alt=""></button>
@@ -80,11 +78,18 @@
                         <button class="submit-btn" type="submit">Publish</button>
                         <div class="share-container"></div>
                     </form>
+                    <button class="save-img" onclick="onSaveImg()">Save</button>
 
 
                 </div>
             </div>
         </section>
+        <div class="saved-container">
+            <h1 class="saved-memes-header"></h1>
+            <div class="saved-memes"></div>
+            <div class="return-btn hide"></div>
+
+        </div>
 
         <section id="gallery"></section>
 
@@ -120,7 +125,9 @@
 
 
 </body>
-<script src="js/dragAndDrop.js"></script>
+<script src="js/util-service.js"></script>
+<script src="js/storage-service.js"></script>
+<script src="js/drag-and-drop.js"></script>
 <script src="js/upload-service.js"></script>
 <script src="js/service.js"></script>
 <script src="js/main.js"></script>

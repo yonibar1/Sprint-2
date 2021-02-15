@@ -1,6 +1,6 @@
+'use strict'
 var gElCanvas;
 var gCtx;
-
 
 function init() {
     renderGallery()
@@ -91,10 +91,31 @@ function clearCanvas() {
 function toggleMenu() {
     document.body.classList.toggle('open-menu')
 }
+function onSaveImg() {
+    var memeToSave = { id: makeId(), url: gElCanvas.toDataURL('image/jpeg') }
+    gSavedMemes.push(memeToSave)
+    saveImg()
+}
 
 function downloadImg(elLink) {
+    resetAndDraw(true)
     var imgContent = gElCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
 }
 
+
+
+
+function renderSavedMemes() {
+    var memes = getSavedMemes()
+    console.log(memes);
+    var strHTMLs = memes.map((meme) => {
+        return `<img src="${meme.url}">`
+    }).join('');
+    console.log(strHTMLs);
+    document.querySelector('.saved-memes').innerHTML = strHTMLs
+    document.querySelector('.saved-memes-header').innerText = 'Saved Memes'
+    document.querySelector('.return-btn').classList.remove('hide')
+    document.querySelector('.return-btn').innerHTML = `<button onclick="location.reload();">Home</button>`
+}
 

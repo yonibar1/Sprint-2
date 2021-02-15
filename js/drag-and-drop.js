@@ -1,3 +1,5 @@
+'use strict'
+
 var gLine;
 var gStartPos;
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
@@ -11,7 +13,6 @@ function initDragAndDrop() {
 }
 
 function createLine() {
-    console.log(gMeme.lines[gMeme.selectedLineIdx]);
     return gMeme.lines[gMeme.selectedLineIdx]
 
 }
@@ -67,14 +68,9 @@ function onUp() {
 }
 
 function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-only');
-    console.log('elContainer:', elContainer)
-    console.log('gElCanvas.width :', gElCanvas.width)
-    console.log('gElCanvas.height :', gElCanvas.height)
-    console.log(elContainer.offsetHeight);
-    console.log(elContainer.offsetWidth);
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
+    const elCanvas = document.querySelector('#my-canvas');
+    gElCanvas.width = elCanvas.offsetWidth
+    gElCanvas.height = elCanvas.offsetHeight
     resetAndDraw()
 }
 

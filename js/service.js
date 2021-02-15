@@ -1,4 +1,6 @@
-
+'use strict'
+const SAVEDMEMES = 'Saved memes'
+var gSavedMemes = []
 var gImgs = [
     { id: 1, url: 'meme-imgs/1.jpg', keywords: ['happy'] },
     { id: 2, url: 'meme-imgs/2.jpg', keywords: ['happy'] },
@@ -24,7 +26,14 @@ var gImgs = [
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: []
+    lines: [],
+}
+
+function getImgById(id) {
+    var idx = parseInt(id)
+    var x = gImgs.find((img) => {
+        return img.id === idx
+    })
 }
 
 // defaults
@@ -35,6 +44,7 @@ let defaultAlign = 'center';
 let defaultStroke = 'black';
 let defaultY = lineDifference;
 let defaultFont = 'Impact'
+let defaultX = document.querySelector('#my-canvas').width / 2
 
 function getImgs() {
     return gImgs
@@ -43,10 +53,19 @@ function getMeme() {
     return gMeme
 }
 
+function saveImg() {
+    if (!gSavedMemes) {
+        gSavedMemes = loadFromStorage(SAVEDMEMES)
+    }
+    _saveMemeToStorage(SAVEDMEMES, gSavedMemes)
+}
+
 function updateMemeIdx(elImage) {
     gMeme.selectedImgId = elImage.dataset.id
 }
-
+function getSavedMemes() {
+    return loadFromStorage(SAVEDMEMES)
+}
 function updateMemeContent(newText) {
     if (gMeme.lines.length === 0) {
         addLine();
@@ -55,19 +74,24 @@ function updateMemeContent(newText) {
     resetAndDraw()
 }
 
-function resetAndDraw() {
+function resetAndDraw(isDownload = false) {
     clearCanvas()
     setImage()
     gMeme.lines.forEach(drawText)
+    if (!isDownload) {
+        focusLine(gMeme.lines[gMeme.selectedLineIdx])
+    }
+
 }
 
 function addLine() {
     const last = gMeme.lines.length > 0 ? gMeme.lines[gMeme.lines.length - 1] : null;
     const y = last ? last.y + lineDifference : defaultY;
-    const line = { txt: '', fontSize: defaultFontSize, color: defaultColor, align: defaultAlign, font: defaultFont, stroke: defaultStroke, y, isDragging: false }
+    const line = { txt: '', fontSize: defaultFontSize, x: defaultX, color: defaultColor, align: defaultAlign, font: defaultFont, stroke: defaultStroke, y, isDragging: false }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
     document.querySelector('.show-line').innerText = gMeme.selectedLineIdx + 1
+    resetAndDraw()
 }
 
 function changeLine() {
@@ -76,8 +100,21 @@ function changeLine() {
         gMeme.selectedLineIdx = 0
     }
     document.querySelector('.show-line').innerText = gMeme.selectedLineIdx + 1
+    resetAndDraw()
     initDragAndDrop()
 }
+
+function focusLine(line) {
+    gCtx.beginPath();
+
+    gCtx.moveTo(0, (line.y + 10));
+    gCtx.lineTo(gElCanvas.width, (line.y + 10));
+    gCtx.lineWidth = 2;
+    gCtx.strokeStyle = 'white';
+    gCtx.stroke();
+    gCtx.closePath()
+}
+
 
 function setFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += diff
@@ -92,6 +129,7 @@ function setFont(value) {
 }
 
 function setAlign(direction) {
+    if (!gMeme.lines.length) return
     if (direction === 'left') gMeme.lines[gMeme.selectedLineIdx].align = 'left'
     if (direction === 'center') gMeme.lines[gMeme.selectedLineIdx].align = 'center'
     if (direction === 'right') gMeme.lines[gMeme.selectedLineIdx].align = 'right'
@@ -138,3 +176,6 @@ function setStrokeColor(inputColor) {
     resetAndDraw()
 }
 
+function _saveMemeToStorage(key, val) {
+    saveToStorage(key, val)
+}
